@@ -31,9 +31,9 @@ class myFiles3D:
         filesnumpymask=[]     #These are the returned variables
         files_list_MRI = (os.listdir(self.directoryBrains))
         print(files_list_MRI)
+        filesmaskbinary=sorted(os.listdir(self.directoryBinaryMask))
         for i in range(0,144): #144 because it's the number of subjects we have. Should be changed to be adaptive to input or context.
             #helpingtools.update_progress("Loading Images:",i)
-            filesmaskbinary=sorted(os.listdir(self.directoryBinaryMask)) #Can be outside the for cycle right? Doesnt need to be repeated each time
             numpymri=nib.load(self.directoryBrains+"/"+files_list_MRI[i])
             splits_MRI=files_list_MRI[i].split("_") 
             nameMRI=splits_MRI[1]+"_"+splits_MRI[2]+"_"+splits_MRI[3] #Removing garbage from the name keeping only the ID
@@ -49,7 +49,7 @@ class myFiles3D:
         filesnumpymri=np.asarray(filesnumpymri)
         print(filesnumpymri.shape)                                                       #Check dimensions of matrix
         filesnumpymri = np.reshape(filesnumpymri,[filesnumpymri.shape[0], 64, 64,40,1 ]) #and force the dimensions of each to the expected 3D format
-        print(filesnumpymri.shape)
+        print(filesnumpymri.shape)                                                       #dimensions are x,y,z,color channel   
         filesnumpymask=np.asarray(filesnumpymask)
         filesnumpymask = np.reshape(filesnumpymask,[filesnumpymask.shape[0], 64, 64,40,1 ])
         #random shuffle all layers
