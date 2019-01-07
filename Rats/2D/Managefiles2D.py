@@ -1,4 +1,6 @@
-#Make the list of numpy arrays to
+#Function to read, load and preprocess all the nifti data
+
+
 import NumpyImage, helpingtools
 import os
 import nibabel as nib
