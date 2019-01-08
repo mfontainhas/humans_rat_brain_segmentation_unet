@@ -29,8 +29,6 @@ class myFiles3D:
                     numpymri=nib.load(self.directoryBrains+"/"+files_list_MRI[j])
                     numpymask=(nib.load(self.directoryClassifiedBrains+"/"+files_list_MASKC[i])).get_data()
                     numpymaskbinary=nib.load(self.directoryBinaryMask+"/Brain_Mask_"+nameMRI+".nii")
-                    #print(files_list_MASKC[i])
-                    #print(files_list_MRI[j])
                     numpymaskbinary=numpymaskbinary.get_data()
                     imagemnumpy=NumpyImage.myNumpy(numpymri)
                     imagemnumpy=imagemnumpy.preProcessing()
