@@ -32,8 +32,9 @@ class myFiles3D:
         files_list_MRI = (os.listdir(self.directoryBrains))
         print(files_list_MRI)
         filesmaskbinary=sorted(os.listdir(self.directoryBinaryMask))
+        
+
         for i in range(0,144): #144 because it's the number of subjects we have. Should be changed to be adaptive to input or context.
-            #helpingtools.update_progress("Loading Images:",i)
             numpymri=nib.load(self.directoryBrains+"/"+files_list_MRI[i])
             splits_MRI=files_list_MRI[i].split("_") 
             nameMRI=splits_MRI[1]+"_"+splits_MRI[2]+"_"+splits_MRI[3] #Removing garbage from the name keeping only the ID
